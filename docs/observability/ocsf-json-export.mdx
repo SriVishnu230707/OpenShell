@@ -52,6 +52,12 @@ supervisor. Enable the MXC ETW consumer in `gateway.toml`, then explicitly opt
 the gateway into durable JSONL output:
 
 ```toml
+[openshell]
+version = 2
+
+[openshell.gateway]
+compute_driver = "mxc"
+
 [openshell.drivers.mxc]
 etw_audit = true
 ```
@@ -60,7 +66,7 @@ etw_audit = true
 $env:OPENSHELL_OCSF_JSON = "1"
 # Optional; defaults to %PROGRAMDATA%\OpenShell\logs.
 $env:OPENSHELL_OCSF_LOG_DIR = "D:\OpenShell\audit"
-openshell-gateway --drivers mxc --config gateway.toml
+openshell-gateway --config gateway.toml
 ```
 
 The sink is available only when Windows selects the MXC driver. It rotates
