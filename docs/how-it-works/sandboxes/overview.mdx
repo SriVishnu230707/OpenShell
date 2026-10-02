@@ -847,10 +847,12 @@ directory are also accepted.
 <Note>
 You can also upload files at creation time with the `--upload` flag on
 `openshell sandbox create`. Pass `--upload` multiple times to upload
-several paths in a single command:
+several paths in a single command. To run a command that uses the uploaded
+files, wait for creation to finish and then use `sandbox exec`:
 
 ```shell
-openshell sandbox create --from registry.example.com/your-org/claude-agent:latest --upload ./src:/workspace/src --upload ./config:/workspace/config -- claude
+openshell sandbox create --name my-sandbox --from registry.example.com/your-org/claude-agent:latest --upload ./src:/workspace/src --upload ./config:/workspace/config
+openshell sandbox exec -n my-sandbox -- claude
 ```
 
 </Note>
